@@ -120,3 +120,34 @@ vector<int> distanceK(TreeNode * root, TreeNode * target, int K){
 	return result;
 }
 ```
+
+### Merge Two binary trees [leetcode](https://leetcode.com/problems/merge-two-binary-trees/)
+```cpp
+TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
+	if(root1 and root2){
+		TreeNode * root = new TreeNode(root1->val+root2->val);
+		root->left = mergeTrees(root1->left, root2->left);
+		root->right = mergeTrees(root1->right, root2->right);
+
+		return root;
+	}
+	return root1 ? root1 : root2;
+}
+```
+
+### Symmetric Tree [leetcode](https://leetcode.com/problems/symmetric-tree/)
+```cpp
+bool isSymmetric(TreeNode * root){
+	if(root)
+		return helper(root->left, root->right);
+	return false;
+}
+bool helper(TreeNode * left, TreeNode * right){
+	if(!left or !right)
+		return left == right;
+	
+	if(left->val != right->val)
+		return false;	
+	return helper(left->left, right->right) and helper(left->right, 	right->left);
+}
+```
