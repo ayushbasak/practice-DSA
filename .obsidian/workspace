@@ -4,24 +4,13 @@
     "type": "split",
     "children": [
       {
-        "id": "96f4515daf6266e0",
+        "id": "e4e4f4610e312380",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "README.md",
+            "file": "Stacks&Queues.md",
             "mode": "source"
-          }
-        }
-      },
-      {
-        "id": "9a9338cd3bf9cd13",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "README.md",
-            "mode": "preview"
           }
         }
       }
@@ -79,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Stacks&Queues.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,9 +86,11 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "96f4515daf6266e0",
+  "active": "e4e4f4610e312380",
   "lastOpenFiles": [
-    "README.md",
-    "Trees.md"
+    "Stacks&Queues.md",
+    "Trees.md",
+    "Greedy.md",
+    "README.md"
   ]
 }
