@@ -36,3 +36,42 @@ bool braces(string A) {
 	return false;
 }
 ```
+
+### Sliding Window Maximum [leetcode](https://leetcode.com/problems/sliding-window-maximum/)
+```cpp
+vector<int> slidingMax(vector<int> &nums, int k){
+	deque<int> indexes;
+	vector<int> res;
+	
+	for(int i =0; i < nums.size(); i++){
+		while(!indexes.empty() and indexes.front() < i - k + 1)
+			indexes.pop_front();
+		while(!indexes.empty() and nums[indexes.back()] < nums[i])
+			indexes.pop_back();
+		indexes.push_back(i);
+		if(i >= k-1)
+			res.push_back( nums[indexes.front()] );
+	}
+	return res;
+}
+```
+
+### Nearest Smallest Element [interviewbit](https://www.interviewbit.com/problems/nearest-smaller-element/)
+```cpp
+vector<int> nearestSmallest(vector<int> &A){
+	vector<int> res;
+	stack<int> s;
+	for(int num: A){
+		if(s.empty()){
+			res.push_back(-1);
+		}
+		else{
+			while(!s.empty() and s.top() >= num)
+				s.pop();
+			res.push_back(num);
+		}
+		s.push(num);
+	}
+	return res;
+}
+```
