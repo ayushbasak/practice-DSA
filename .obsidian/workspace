@@ -9,18 +9,18 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Stacks&Queues.md",
+            "file": "Hashing.md",
             "mode": "source"
           }
         }
       },
       {
-        "id": "d9a7751dbbf04c76",
+        "id": "950b50f83ea73535",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Stacks&Queues.md",
+            "file": "Hashing.md",
             "mode": "preview"
           }
         }
@@ -79,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Stacks&Queues.md",
+                "file": "Hashing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,8 +97,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "d9a7751dbbf04c76",
+  "active": "e4e4f4610e312380",
   "lastOpenFiles": [
+    "Hashing.md",
+    "Untitled 1.md",
     "Stacks&Queues.md",
     "Trees.md",
     "Greedy.md",
