@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Hashing.md",
-            "mode": "source"
+            "file": "README.md",
+            "mode": "preview"
           }
         }
       },
@@ -79,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Hashing.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,11 +99,11 @@
   },
   "active": "e4e4f4610e312380",
   "lastOpenFiles": [
+    "README.md",
+    "Greedy.md",
     "Hashing.md",
     "Untitled 1.md",
     "Stacks&Queues.md",
-    "Trees.md",
-    "Greedy.md",
-    "README.md"
+    "Trees.md"
   ]
 }
