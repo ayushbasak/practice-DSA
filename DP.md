@@ -53,7 +53,7 @@ int climbStairs(int n){
 }
 ```
 
-### Pain House [interviewbit](https://www.interviewbit.com/problems/paint-house/)
+### Paint House [interviewbit](https://www.interviewbit.com/problems/paint-house/)
 
 ```cpp
 int minCost(vector<vector<int>> &A){
