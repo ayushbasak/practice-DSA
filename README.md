@@ -2,10 +2,11 @@
 Some Important DSA Leetcode / Interviewbit Solutions.
 
 1. [Trees](Trees.md)
-2. [Stacks and Queues](Stacks&Queues.md)
-3. [Hashing](Hashing.md)
-4. [Dynamic Programming](DP.md)
-5. [Graphs](Graph.md)
+2. [Linked Lists](LinkedLists.md)
+3. [Stacks and Queues](Stacks&Queues.md)
+4. [Hashing](Hashing.md)
+5. [Dynamic Programming](DP.md)
+6. [Graphs](Graph.md)
 
 ping me on [telegram](https://t.me/ayushbasak) for queries.
 
