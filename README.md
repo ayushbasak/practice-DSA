@@ -5,6 +5,7 @@ Some Important DSA Leetcode / Interviewbit Solutions.
 2. [Stacks and Queues](Stacks&Queues.md)
 3. [Hashing](Hashing.md)
 4. [Dynamic Programming](DP.md)
+5. [Graphs](Graph.md)
 
 ping me on [telegram](https://t.me/ayushbasak) for queries.
 

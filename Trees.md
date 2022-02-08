@@ -44,6 +44,34 @@ bool isValidBST(TreeNode * root){
 }
 ```
 
+### Level Order [leetcode](https://leetcode.com/problems/binary-tree-level-order-traversal/)
+```cpp
+vector<vector<int>> levelOrder(TreeNode* root) {
+	if(!root)
+		return {};
+
+	queue<TreeNode *> q;
+	vector<vector<int>> res;
+	q.push(root);
+
+	while(!q.empty()){
+		int size = q.size();
+		vector<int> temp;
+		for(int i =0; i<size; i++){
+			TreeNode * top = q.front();
+			q.pop();
+			temp.push_back(top->val);
+
+			if(top->left)
+				q.push(top->left);
+			if(top->right)
+				q.push(top->right);
+		}
+		res.push_back(temp);
+	}
+	return res;
+```
+
 ---
 ###  Next Pointer binary Tree [leetcode](https://leetcode.com/problems/populating-next-right-pointers-in-each-node/)
 ```cpp
