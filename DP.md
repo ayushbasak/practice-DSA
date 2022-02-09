@@ -104,3 +104,50 @@ int minPathSum(vector<vector<int>>& grid) {
 	return dp[m-1][n-1];
 }
 ```
+
+### Triangle [leetcode](https://leetcode.com/problems/triangle/)
+```cpp
+int minimumTotal(vector<vector<int>>& triangle) {
+        int r = triangle.size();
+        
+        vector<int> res = triangle[r-1];
+        
+        for ( int i = r - 2; i >= 0 ; i-- )
+            for ( int j = 0; j < triangle[i].size() ; j++ )
+                res[j] = triangle[i][j] + min(res[j], res[j+1]);
+        return res[0];
+    }
+```
+
+### Maximal Square
+[reference: Errichto](https://youtu.be/oPrpoVdRLtg)
+```cpp
+int maximalSquare(vector<vector<char>> &matrix){
+	int m = matrix.size();
+	if(!m) return 0;
+	int n = matrix[0].size();
+	
+	int dp[301][301];
+	int res = 0;
+	
+	for(int i =0; i<m; i++){
+		for(int j =0; j<n; j++){
+			if(matrix[i][j] == '1'){
+				dp[i][j] = 1;
+				if(i > 0 and j > 0){
+					dp[i][j] += min({
+						dp[i-1][j],
+						dp[i][j-1],
+						dp[i-1][j-1]
+					});
+				}
+			}
+			else
+				dp[i][j] = matrix[i][j] - '0';
+			res = max(res, dp[i][j]);
+		}
+	}
+	// return area
+	return res * res;
+}
+```
