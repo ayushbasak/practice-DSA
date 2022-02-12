@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "a8b9882bd7aadd59",
+        "id": "246f01f269fec72f",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -15,12 +15,12 @@
         }
       },
       {
-        "id": "84e15d6c07fd31a5",
+        "id": "419a6056ca2a4d95",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DP.md",
+            "file": "LinkedLists.md",
             "mode": "preview"
           }
         }
@@ -97,12 +97,12 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "a8b9882bd7aadd59",
+  "active": "246f01f269fec72f",
   "lastOpenFiles": [
     "DP.md",
+    "LinkedLists.md",
     "README.md",
     "Hashing.md",
-    "LinkedLists.md",
     "Graphs.md",
     "Trees.md",
     "Greedy.md",

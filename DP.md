@@ -151,3 +151,26 @@ int maximalSquare(vector<vector<char>> &matrix){
 	return res * res;
 }
 ```
+
+### Longest Common Subsequence [leetcode](https://leetcode.com/problems/longest-common-subsequence/)
+__Recursive Memoized__
+
+```cpp
+int dp[1000][1000];
+int helper(string A, string B, int a, int b){
+	if(!a or !b) return 0;
+	
+	if(dp[a][b])
+		return dp[a][b];
+	
+	if(A[a] == A[b])
+		return dp[a][b] = helper(A, B, a-1, b-1) + 1;
+	return dp[a][b] = max({
+		helper(A, B, a - 1, b),
+		helper(A, B, a, b-1)
+	});
+}
+int lcs(string A, string B){
+	return helper(A, B, A.length() -1, B.length() -1);
+}
+```
