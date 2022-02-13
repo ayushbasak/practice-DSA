@@ -7,6 +7,7 @@ Some Important DSA Leetcode / Interviewbit Solutions.
 4. [Hashing](Hashing.md)
 5. [Dynamic Programming](DP.md)
 6. [Graphs](Graphs.md)
+7. [Backtracking](Backtracking.md)
 
 ping me on [telegram](https://t.me/ayushbasak) for queries.
 

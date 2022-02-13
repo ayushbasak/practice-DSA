@@ -48,7 +48,7 @@ vector<vector<int>> subsets(vector<int> &nums){
 }
 ```
 
-### Combination sum [leetcode](https://leetcode.com/problems/combination-sum/)
+### Combination Sum [leetcode](https://leetcode.com/problems/combination-sum/)
 ```cpp
 void helper(vector<int> &nums, int pos, int target, vector<int> temp, vector<vector<int>> &res){
 	if(target < 0) return;
@@ -70,6 +70,31 @@ vector<vector<int>> combinationSum(vector<int> &nums, int target){
 	vector<int> temp;
 	sort(nums.begin(), nums.end());
 	helper(nums, 0, target, temp, res);
+	return res;
+}
+```
+
+### Letter Combinations of a Phone number [leetcode](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
+```cpp
+vector<string> mp = {
+	"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"
+};
+void helper(string digits, int pos, string curr, vector<string> &res){
+	if(pos == digits.length()){
+		res.push_back(curr);
+		return;
+	}
+
+	for(char c: mp[digits[pos] - '0']){
+		helper(digits, pos + 1, curr + c, res);
+	}
+}
+vector<string> letterCombinations(string digits) {
+	if(digits == "")
+		return {};
+	vector<string> res;
+	string temp = "";
+	helper(digits, 0, temp, res);
 	return res;
 }
 ```

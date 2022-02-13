@@ -9,19 +9,19 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Backtracking.md",
+            "file": "Trees.md",
             "mode": "source"
           }
         }
       },
       {
-        "id": "439fb0d5c56849c7",
+        "id": "64ed2ab5ec5cfe06",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Backtracking.md",
-            "mode": "source"
+            "file": "Trees.md",
+            "mode": "preview"
           }
         }
       }
@@ -79,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Backtracking.md",
+                "file": "Trees.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,14 +99,14 @@
   },
   "active": "d3b1ca00909962d0",
   "lastOpenFiles": [
+    "Trees.md",
     "Backtracking.md",
+    "README.md",
     "img.png.md",
     "LinkedLists.md",
     "DP.md",
-    "README.md",
     "Hashing.md",
     "Graphs.md",
-    "Trees.md",
     "Greedy.md",
     "Untitled 1.md"
   ]

@@ -179,3 +179,24 @@ bool helper(TreeNode * left, TreeNode * right){
 	return helper(left->left, right->right) and helper(left->right, 	right->left);
 }
 ```
+
+### Flatten Binary Tree into Linked List [leetcode](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/)
+```cpp
+void flatten(TreeNode * root){
+	if(!root) return;
+	
+	flatten(root->left);
+	flatten(root->right);
+	
+	if(root->left){
+		TreeNode * temp  = root->right;
+		root->right = root->left;
+		
+		root->left = nullptr;
+		while(root->right)
+			root = root->right;
+		
+		root->right = temp;
+	}
+}
+```
