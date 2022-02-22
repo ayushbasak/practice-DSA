@@ -200,3 +200,28 @@ void flatten(TreeNode * root){
 	}
 }
 ```
+
+### Maximum Binary Tree [leetcode](https://leetcode.com/problems/maximum-binary-tree/)
+```cpp
+TreeNode * helper(vector<int> &nums, int start, int end){
+	if(start > end) 
+		return nullptr;
+	int curr_max = 0;
+	int index = 0;
+	for(int i =start; i<= end; i++){
+		if(curr_max <= nums[i]){
+			curr_max = nums[i];
+			index = i;
+		}
+	}
+
+	TreeNode * newNode = new TreeNode(curr_max);
+	newNode->left = helper(nums, start, index - 1);
+	newNode->right = helper(nums, index + 1, end);
+
+	return newNode;
+}
+TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
+	return helper(nums, 0, nums.size() - 1);
+}
+```

@@ -8,6 +8,7 @@ Some Important DSA Leetcode / Interviewbit Solutions.
 5. [Dynamic Programming](DP.md)
 6. [Graphs](Graphs.md)
 7. [Backtracking](Backtracking.md)
+8. [String](String.md)
 
 ping me on [telegram](https://t.me/ayushbasak) for queries.
 
