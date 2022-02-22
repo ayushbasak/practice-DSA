@@ -174,3 +174,43 @@ int lcs(string A, string B){
 	return helper(A, B, A.length() -1, B.length() -1);
 }
 ```
+
+### Unique Paths [leetcode](https://leetcode.com/problems/unique-paths/)
+```cpp
+int uniquePaths(int m, int n) {
+	int dp[100][100];
+
+	for(int i =0; i<m; i++)
+		dp[i][0] = 1;
+	for(int j=0; j<n; j++)
+		dp[0][j] = 1;
+
+	for(int i =1; i<m; i++){
+		for(int j =1; j<n; j++)
+			dp[i][j] = dp[i-1][j] + dp[i][j-1];
+	}
+	return dp[m-1][n-1];
+}
+```
+
+### Number of ways to paint 3 x N grid [leetcode](https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/)
+
+Math DP [reference](https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/discuss/574923/JavaC%2B%2BPython-DP-O(1)-Space)
+
+```cpp
+int numOfWays(int n) {
+	long xyz = 6, xyx = 6;
+	long XYZ, XYX;
+
+	long mod = 1e9 + 7;
+	for(int i =1; i<n; i++){
+		XYZ = 3 * xyz + 2 * xyx;
+		XYX = XYZ - xyz;
+
+		xyz = XYZ % mod;
+		xyx = XYX % mod;
+	}
+
+	return (int)((xyz + xyx) % mod);
+}
+```

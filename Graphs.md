@@ -45,3 +45,41 @@ int maxAreaOfIsland(vector<vector<int>>& grid) {
 	return maxSize;
 }
 ```
+
+### Word Search [leetcode](https://leetcode.com/problems/word-search/)
+
+```cpp
+bool helper(vector<vector<char>> &board, int i, int j, int R, int C, string text, int pos){
+	if(i < 0 or j < 0 or i >= R or j >= C)
+		return false;
+	if(board[i][j] == '*') return false;
+
+	if(board[i][j] != text[pos]) return false;
+
+	if(pos == text.length()-1)
+		return true;
+	char temp = board[i][j];
+	board[i][j] = '*';
+
+	bool l,r,u,d;
+	r = helper(board, i+1, j, R, C, text, pos+1); 
+	l = helper(board, i-1, j, R, C, text, pos+1);
+	d = helper(board, i, j+1, R, C, text, pos+1);
+	u = helper(board, i, j-1, R, C, text, pos+1);
+
+	board[i][j] = temp;
+
+	return r or l or u or d;
+}
+bool exist(vector<vector<char>>& board, string word) {
+	int m = board.size();
+	if(!m) return false;
+	int n = board[0].size();
+	for(int i =0; i<m; i++){
+		for(int j =0; j<n; j++)
+			if(helper(board, i, j, m, n, word, 0))
+				return true;
+	}
+	return false;
+}
+```
