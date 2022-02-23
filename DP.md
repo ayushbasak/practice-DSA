@@ -214,3 +214,39 @@ int numOfWays(int n) {
 	return (int)((xyz + xyx) % mod);
 }
 ```
+
+### Coin Change [leetcode](https://leetcode.com/problems/coin-change/submissions/)
+__Recursive Memoized__
+```cpp
+unordered_map<int, int> mp;
+int coinChange(vector<int>& coins, int amount) {
+	if(amount < 0) return -1;
+	else if(!amount) return 0;
+
+	if(mp[amount]) return mp[amount];
+	int best = INT_MAX;
+	for(int coin: coins){
+		int k = coinChange(coins, amount - coin);
+		if(k >= 0 and k < best)
+			best = k + 1;
+	}
+
+	return mp[amount] = best == INT_MAX ? -1: best;
+}
+```
+__Iterative__
+```cpp
+int coinChange(vector<int>& coins, int amount) {
+	int best = amount + 1;
+	vector<int> dp(amount + 1, best);
+	dp[0] = 0;
+	for (int i = 1; i <= amount; i++) {
+		for (int j = 0; j < coins.size(); j++) {
+			if (coins[j] <= i) {
+				dp[i] = min(dp[i], dp[i - coins[j]] + 1);
+			}
+		}
+	}
+	return dp[amount] > amount ? -1 : dp[amount];
+}
+```
