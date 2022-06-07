@@ -21,6 +21,23 @@ void inorder(TreeNode * root){
 }
 ```
 
+### Invert Binary Tree [leetcode](https://leetcode.com/problems/invert-binary-tree/)
+```cpp
+TreeNode* invertTree(TreeNode* root) {
+	if(!root) return nullptr;
+	TreeNode * temp = root->left;
+	root->left = root->right;
+	root->right = temp; 
+	
+	invertTree(root->left);
+	invertTree(root->right);
+	
+	return root;
+}
+```
+
+
+
 ### Valid BST [leetcode](https://leetcode.com/problems/validate-binary-search-tree/)
 ```cpp
 bool isValidBST(TreeNode * root){
@@ -223,5 +240,25 @@ TreeNode * helper(vector<int> &nums, int start, int end){
 }
 TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
 	return helper(nums, 0, nums.size() - 1);
+}
+```
+
+### Diameter of Binary Tree [leetcode]()
+```cpp
+int curr_max = 0;
+int diameterOfBinaryTree(TreeNode* root) {
+	traverse(root);
+	return curr_max;
+}
+int traverse(TreeNode * node){
+	if(!node)
+		return 0;
+
+	int left = traverse(node->left);
+	int right = traverse(node->right);
+
+	curr_max = max(curr_max, left + right);
+
+	return max(left, right) + 1;   
 }
 ```
