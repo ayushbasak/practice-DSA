@@ -36,31 +36,6 @@ TreeNode* invertTree(TreeNode* root) {
 }
 ```
 
-
-
-### Valid BST [leetcode](https://leetcode.com/problems/validate-binary-search-tree/)
-```cpp
-bool isValidBST(TreeNode * root){
-	if(!root) return true;
-	stack<TreeNode * > st;
-	TreeNode * previous = nullptr;
-	while(root or !st.empty()){
-		while(root){
-			st.push(root);
-			root = root->left;
-		}
-
-		root = st.top(); st.pop();
-		if(previous and root->val <= previous->val)
-			return false;
-
-		previous = root;
-		root = root->right;
-	}
-	return true;
-}
-```
-
 ### Level Order [leetcode](https://leetcode.com/problems/binary-tree-level-order-traversal/)
 ```cpp
 vector<vector<int>> levelOrder(TreeNode* root) {
@@ -243,7 +218,7 @@ TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
 }
 ```
 
-### Diameter of Binary Tree [leetcode]()
+### Diameter of Binary Tree [leetcode](https://leetcode.com/problems/diameter-of-binary-tree/)
 ```cpp
 int curr_max = 0;
 int diameterOfBinaryTree(TreeNode* root) {
@@ -260,5 +235,24 @@ int traverse(TreeNode * node){
 	curr_max = max(curr_max, left + right);
 
 	return max(left, right) + 1;   
+}
+```
+
+### Balanced Binary Tree [leetcode](https://leetcode.com/problems/balanced-binary-tree/)
+```cpp
+int helper(TreeNode * root) {
+	if (!root) return 0;
+
+	int left_height = helper(root -> left);
+	int right_height = helper(root -> right);
+	if (left_height < 0 or right_height < 0) 
+		return -1;
+
+	if (abs(left_height - right_height) > 1)  
+		return -1;
+	return max (left_height, right_height) + 1;
+}
+bool isBalanced(TreeNode *root) {
+	return dfsHeight (root) != -1;
 }
 ```
