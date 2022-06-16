@@ -256,3 +256,27 @@ bool isBalanced(TreeNode *root) {
 	return dfsHeight (root) != -1;
 }
 ```
+
+### Vertical Order Traversal [GFG]()
+```cpp
+void helper(Node * root, int distance, map<int, vector<int>> &mp) {
+	if (!root) return;
+	mp[distance].push_back(root->data);
+	helper(root->left, distance - 1, mp);
+	helper(root->left, distance + 1, mp);
+}
+vector<int> topView(Node *root)
+{
+	if (!root) return {};
+	map<int, vector<int>> mp;
+	helper(root, 0, mp);
+	map<int, vector<int>>::iterator itr;
+	vector<int> res;
+	for (itr = mp.begin(); itr != mp.end(); itr++) {
+		for(int i =0; i < itr->second.size(); i++){
+			res.push_back(itr->second[i]);
+		}
+	}
+	return res;
+}
+```

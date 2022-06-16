@@ -215,7 +215,7 @@ int numOfWays(int n) {
 }
 ```
 
-### Coin Change [leetcode](https://leetcode.com/problems/coin-change/submissions/)
+### Coin Change [leetcode](https://leetcode.com/problems/coin-change/)
 __Recursive Memoized__
 ```cpp
 unordered_map<int, int> mp;
@@ -237,8 +237,7 @@ int coinChange(vector<int>& coins, int amount) {
 __Iterative__
 ```cpp
 int coinChange(vector<int>& coins, int amount) {
-	int best = amount + 1;
-	vector<int> dp(amount + 1, best);
+	vector<int> dp(amount + 1, amount + 1);
 	dp[0] = 0;
 	for (int i = 1; i <= amount; i++) {
 		for (int j = 0; j < coins.size(); j++) {

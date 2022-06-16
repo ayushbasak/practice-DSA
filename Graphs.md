@@ -83,3 +83,37 @@ bool exist(vector<vector<char>>& board, string word) {
 	return false;
 }
 ```
+
+### Path in Directed Graph [interviewbit](https://www.interviewbit.com/problems/path-in-directed-graph/)
+
+__Approach__:  
+- Convert edges to adjancency list
+- DFS
+
+__Complexity__: 
+
+| Time | Space |
+| --- | --- |
+| O(V + E) | O(V) |
+```cpp
+int Solution::solve(int A, vector<vector<int>> &B) {
+    vector<bool> visited(A+1, false);
+    vector<vector<int>> graph(A + 1);
+    for(auto edge: B) {
+        graph[edge[0]].push_back(edge[1]);
+    }
+    stack<int> st;
+    st.push(1);
+    while (!st.empty()) {
+        int curr = st.top(); st.pop();
+        visited[curr] = true;
+        if (visited[A])
+            return 1;
+        for (auto child: graph[curr]) {
+            if(!visited[child])
+                st.push(child);
+        }
+    }
+    return 0;
+}
+```
