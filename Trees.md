@@ -352,6 +352,15 @@ int minCameraCover(TreeNode* root) {
 ### Cousins in Binary Tree [leetcode](https://leetcode.com/problems/cousins-in-binary-tree/)
 [reference](https://leetcode.com/problems/cousins-in-binary-tree/discuss/240081/Java-easy-to-understand-and-clean-solution)
 
+__Approach__:  
+- by parent, we mean immediate parent
+- find node depth of x and y, and their parents DFS
+
+__Complexity__:  
+| Time | Space |
+| --- | --- |
+| O(N) | O(1) |
+
 ```cpp
 int xDepth = -1, yDepth = -1;
 TreeNode * xParent = nullptr, * yParent = nullptr;
