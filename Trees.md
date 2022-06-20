@@ -280,3 +280,99 @@ vector<int> topView(Node *root)
 	return res;
 }
 ```
+
+### Maximum Product of Splitted Binary Tree [leetcode](https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/)
+
+__Approach__:  
+- First DFS -> caculate total sum of tree
+- Second DFS, find maximum product of two subtrees
+
+__Complexity__:  
+| Time | Space |
+| --- | --- |
+| O(N) | O(height) |
+
+```cpp
+long res = 0, total = 0, sub;
+int maxProduct(TreeNode* root) {
+	total = s(root), s(root);
+	return res % (int)(1e9 + 7);
+}
+
+int s(TreeNode* root) {
+	if (!root) return 0;
+	sub = root->val + s(root->left) + s(root->right);
+	res = max(res, sub * (total - sub));
+	return sub;
+}
+```
+
+### Binary Tree Cameras [leetcode](https://leetcode.com/problems/binary-tree-cameras/)
+[reference](https://www.youtube.com/watch?v=uoFrIIrp5_g)
+__Approach__:  
+- -1 -> node needs to be covered by a parent
+- 0 -> node uses a camera on itself, children and parent
+- 1 -> node is covered by child nodes
+- All null nodes are considered covered
+- leaf nodes need coverage
+- if a child node is needs coverage, current node HAS to provide coverage
+- if a child node provides coverage to parent, node is cosidered covered
+
+__Complexity__:  
+
+| Time | Space |
+| --- | --- |
+| O(N) | O(1) |
+
+```cpp
+int min_cameras = 0;
+int helper (TreeNode * root) {
+	if (!root) return 1;
+
+	int left = helper(root->left);
+	int right = helper(root->right);
+
+	if (left == -1 or right == -1) {
+		min_cameras++;
+		return 0;
+	}
+
+	if (!left or !right)
+		return 1;
+	return -1;
+}
+int minCameraCover(TreeNode* root) {
+	if (helper(root) == -1)
+		min_cameras++;
+
+	return min_cameras;
+}
+```
+
+### Cousins in Binary Tree [leetcode](https://leetcode.com/problems/cousins-in-binary-tree/)
+[reference](https://leetcode.com/problems/cousins-in-binary-tree/discuss/240081/Java-easy-to-understand-and-clean-solution)
+
+```cpp
+int xDepth = -1, yDepth = -1;
+TreeNode * xParent = nullptr, * yParent = nullptr;
+void helper(TreeNode * root, int x, int y, int depth, TreeNode * parent) {
+	if (!root) return;
+
+	if (root->val == x) {
+		xDepth = depth;
+		xParent = parent;
+	}
+
+	else if (root->val == y) {
+		yDepth = depth;
+		yParent = parent;
+	}
+
+	helper(root->left, x, y, depth + 1, root);
+	helper(root->right, x, y, depth + 1, root);
+}
+bool isCousins(TreeNode* root, int x, int y) {
+	helper(root, x, y, 0, nullptr);
+	return (xDepth == yDepth and xParent != yParent);
+}
+```

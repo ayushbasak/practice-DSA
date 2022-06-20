@@ -95,6 +95,9 @@ __Complexity__:
 | Time | Space |
 | --- | --- |
 | O(V + E) | O(V) |
+
+_Use Queue for BFS_
+_For undirected Graphs: add backward edge to adjacency list also_
 ```cpp
 int Solution::solve(int A, vector<vector<int>> &B) {
     vector<bool> visited(A+1, false);
