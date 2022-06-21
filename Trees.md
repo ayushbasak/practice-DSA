@@ -257,7 +257,7 @@ bool isBalanced(TreeNode *root) {
 }
 ```
 
-### Vertical Order Traversal [GFG]()
+### Vertical Order Traversal [GFG](https://www.geeksforgeeks.org/print-binary-tree-vertical-order-set-2/)
 ```cpp
 void helper(Node * root, int distance, map<int, vector<int>> &mp) {
 	if (!root) return;
@@ -265,7 +265,7 @@ void helper(Node * root, int distance, map<int, vector<int>> &mp) {
 	helper(root->left, distance - 1, mp);
 	helper(root->left, distance + 1, mp);
 }
-vector<int> topView(Node *root)
+vector<int> verticalOrder(Node *root)
 {
 	if (!root) return {};
 	map<int, vector<int>> mp;
@@ -374,5 +374,25 @@ void helper(TreeNode * root, int x, int y, int depth, TreeNode * parent) {
 bool isCousins(TreeNode* root, int x, int y) {
 	helper(root, x, y, 0, nullptr);
 	return (xDepth == yDepth and xParent != yParent);
+}
+```
+
+### Path Sum II [leetcode](https://leetcode.com/problems/path-sum-ii/)
+```cpp
+void helper(TreeNode * root, vector<vector<int>> &res, vector<int> &path, int sum) {
+	if (!root) return;
+	path.push_back(root->val);
+	if (!root->left and !root->right and sum == root->val) {
+		res.push_back(path);
+	}
+	helper(root->left, res, path, sum - root->val);
+	helper(root->right, res, path, sum - root->val);
+	path.pop_back();
+}
+vector<vector<int>> pathSum(TreeNode * root, int sum) {
+	vector<vector<int>> res;
+	vector<int> path;
+	helper(root, res, path, sum);
+	return res;
 }
 ```
