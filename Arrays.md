@@ -1,7 +1,7 @@
 # Arrays
 Leetcode / InterviewBit Questions based on Arrays and Miscellaneous
 
-### 3Sum [leetcode]()
+### 3Sum [leetcode](https://leetcode.com/problems/3sum/)
 __Approach__:  
 - for every element, perform __2Sum__. 
 - To prevent duplicate elements, check for them with triplet
@@ -43,7 +43,7 @@ vector<vector<int>> threeSum(vector<int>& numbers) {
 }
 ```
 
-### Maximum Gap [leetcode]()
+### Maximum Gap [leetcode](https://leetcode.com/problems/maximum-gap/)
 [reference](https://leetcode.com/problems/maximum-gap/discuss/50643/bucket-sort-JAVA-solution-with-explanation-O(N)-time-and-space)
 
 __Approach__:  
@@ -99,5 +99,81 @@ int maximumGap(vector<int> &nums) {
 	}
 	max_gap = max(max_gap, max_element - prev);
 	return max_gap;
+}
+```
+
+### Majority Element [leetcode](https://leetcode.com/problems/majority-element/)
+__Approach__:  
+- Boyer Moore Majority Vote Algorithm
+- It is gauranteed that there is at least one element whose count is greater than __ceil (n / 2)__
+- If we make pairs of non similar elements, all elements exhaust themselves, and only the element in majority remains
+__Complexity__:  
+
+| Time | Space |
+| --- | --- |
+| O(N) | O(1) |
+
+```cpp
+int majorityElement(vector<int>& nums) {
+	int maj = nums[0], count = 1;
+	for(int i =1;i< nums.size();i++){
+		if(!count){
+			count++;
+			maj = nums[i];
+		}
+		else if(maj == nums[i])
+			++count;
+		else
+			--count;
+	}
+	return maj;
+}
+```
+
+### Majority Element II [leetcode](https://leetcode.com/problems/majority-element-ii/)
+[reference](https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html)
+__Approach__:  
+- Boyer Moore Majority Voting Algorithm
+- There can be either 1 or 2 majority elements with __count > ceil ( n / 3)__.
+- Create pairs of these assumed two elements with non majority elements, till we find one or two majority.
+
+__Complexity__:  
+
+| Time | Space |
+| --- | --- |
+| O(N) | O(1) |
+```cpp
+vector<int> majorityNumber(vector<int> &nums) {
+	int num1 = nums[0], num2 = nums[0];
+	int count1 = 0, count2 = 0;
+	for (int num: nums) {
+		if (num == num1)
+			++count1;
+		else if (num == num2)
+			++count2;
+		else if (!count1) {
+			count1 = 1;
+			num1 = num;
+		}
+		else if (!count2) {
+			count2 = 1;
+			num2 = num;
+		}
+		else {
+			count1--;
+			count2--;
+		}
+	}
+	count1 = 0; count2 = 0;
+	for (int num: nums) {
+		if (num == num1) ++count1;
+		else if (num == num2) ++count2;
+	}
+
+	vector<int> res;
+	if (count1 > nums.size() / 3) res.push_back(num1);
+	if (count2 > nums.size() / 3) res.push_back(num2);
+
+	return res;
 }
 ```
