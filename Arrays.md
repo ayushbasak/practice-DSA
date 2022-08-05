@@ -177,3 +177,38 @@ vector<int> majorityNumber(vector<int> &nums) {
 	return res;
 }
 ```
+
+### Largest Number [leetcode](https://leetcode.com/problems/largest-number/)
+__Approach__:  
+- Sort the list according to which combination of two strings is larger
+- edge case, if sorted list contains even a single 0 in the beginning, return "0"
+__Complexity__: 
+
+| Time | Space |
+| --- | --- |
+| O(k N logN ) | O(N) |
+
+```cpp
+static bool comp(string &s1, string &s2) {
+	return s1 + s2 > s2 + s1;
+}
+string largestNumber(vector<int>& nums) {
+	vector<string> temp;
+
+	for (int num: nums) {
+		temp.push_back(to_string(num));
+	}
+
+	sort(temp.begin(), temp.end(), comp);
+	string res = "";
+
+	if (temp[0][0] == '0')
+		return "0";
+
+	for (string num: temp) {
+		res += num;
+	}
+
+	return res;
+}
+```

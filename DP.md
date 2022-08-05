@@ -175,6 +175,24 @@ int lcs(string A, string B){
 }
 ```
 
+### Longest Palindromic Subsequence [leetcode](https://leetcode.com/problems/longest-palindromic-subsequence/)
+
+```cpp
+int dp[1000][1000] = {};
+int longestPalindromeSubseq(const string& s) {
+	return helper(s, 0, s.size() - 1);
+}
+int helper(const string& s, int l, int r) {
+	if (l > r) return 0;
+	if (l == r) return 1;
+	if (dp[l][r])
+		return dp[l][r];
+	if (s[l] == s[r])
+		return dp[l][r] = helper(s, l+1, r-1) + 2;
+	return dp[l][r] = max(helper(s, l+1, r), helper(s, l, r-1));
+}
+```
+
 ### Unique Paths [leetcode](https://leetcode.com/problems/unique-paths/)
 ```cpp
 int uniquePaths(int m, int n) {
