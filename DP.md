@@ -175,6 +175,52 @@ int lcs(string A, string B){
 }
 ```
 
+### Edit Distance [leetcode](https://leetcode.com/problems/edit-distance/)
+```cpp
+int minDistance(string word1, string word2) {
+	int l1 = word1.length();
+	int l2 = word2.length();
+	int dp[l1 + 1][l2 + 1];
+	for(int i = 0; i <= l1; i++)
+		dp[i][0] = i;
+	
+	for(int j = 0; j <= l2; j++)
+		dp[0][j] = j; 
+	
+	for(int i = 1; i <= l1; i++){
+		for(int j = 1; j <= l2; j++){
+			if(word1[i-1] == word2[j-1])
+				dp[i][j] = dp[i-1][j-1];
+			else
+				dp[i][j] = 1 + min({dp[i][j - 1],
+							   dp[i - 1][j], 
+							   dp[i - 1][j - 1]});
+		}
+	}
+	
+	return dp[l1][l2];
+}
+```
+
+### Distinct Dubsequences [leetcode]( https://leetcode.com/problems/distinct-subsequences/ ) 
+```cpp
+int numDistinct(string s, string t) {
+	int m = t.length();
+	int n = s.length();
+	vector<unsigned int> dp(m + 1, 0);
+	dp[0] = 1;
+	for (int j = 1; j <= n; j++) {
+		int previous = 1;
+		for (int i = 1; i <= m; i++) {
+			int temp = dp[i];
+			dp[i] += (s[j - 1] == t[i - 1] ? previous : 0);
+			previous = temp;
+		}
+	}
+	return (int)dp[m];
+}
+```
+
 ### Longest Palindromic Subsequence [leetcode](https://leetcode.com/problems/longest-palindromic-subsequence/)
 
 ```cpp
