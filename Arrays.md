@@ -212,3 +212,87 @@ string largestNumber(vector<int>& nums) {
 	return res;
 }
 ```
+
+### Jump Game [leetcode](https://leetcode.com/problems/jump-game/)
+
+```cpp
+bool canJump(vector<int>& nums) {
+	int n = nums.size();
+	int last = n - 1;
+	for (int i = n - 2; i >= 0; i--) {
+		if (i + nums[i] >= last)
+			last = i;
+	}
+	
+	return last <= 0;
+}
+```
+
+### Jump Game II [leetcode](https://leetcode.com/problems/jump-game-ii/)
+
+```cpp
+int jump(vector<int>& nums) {
+	int jumps = 0;
+	int end = 0, far = 0;
+	for (int i = 0; i < nums.size() - 1; i++) {
+		far = max(far, i + nums[i]);
+		if (i == end) {
+			jumps++;
+			end = far;
+		}
+	}
+	
+	return jumps;
+}
+```
+
+### Jump Game III [leetcode](https://leetcode.com/problems/jump-game-iii/)
+
+```cpp
+bool canReach(vector<int>& arr, int start) {
+	if (start < 0 or start >= arr.size() or arr[start] < 0)
+		return false;
+	
+	arr[start] *= -1;
+	
+	return arr[start] == 0 or 
+		canReach(arr, start - arr[start]) or
+		canReach(arr, start + arr[start]);
+}
+```
+
+### Jump Game IV [leetcode](https://leetcode.com/problems/jump-game-iv/)
+
+```cpp
+int minJumps(vector<int>& arr) {
+	int n = arr.size();
+	unordered_map<int, vector<int>> mp;
+	for (int i = 0; i < n; i++) {
+		mp[arr[i]].push_back(i);    
+	}
+	vector<bool> visited(n); 
+	visited[0] = true;
+	queue<int> q; 
+	q.push(0);
+	int count = 0;
+	while (!q.empty()) {
+		for (int size = q.size(); size > 0; size--) {
+			int index = q.front(); q.pop();
+			if (index == n - 1) 
+				return count;
+			vector<int>& next = mp[arr[index]];
+			next.push_back(index - 1); 
+			next.push_back(index + 1);
+			for (int j : next) {
+				if (j >= 0 and j < n and !visited[j]) {
+					visited[j] = true;
+					q.push(j);
+				}
+			}
+			next.clear();
+		}
+		count++;
+	}
+	return 0;
+}
+```
