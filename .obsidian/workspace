@@ -130,9 +130,11 @@
   },
   "active": "0a7742ed24808538",
   "lastOpenFiles": [
-    "().md",
-    "DP.md",
+    "BST.md",
+    "Trees.md",
     "Arrays.md",
-    "Backtracking.md"
+    "().md",
+    "Backtracking.md",
+    "DP.md"
   ]
 }

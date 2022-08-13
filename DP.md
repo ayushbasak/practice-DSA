@@ -313,3 +313,38 @@ int coinChange(vector<int>& coins, int amount) {
 	return dp[amount] > amount ? -1 : dp[amount];
 }
 ```
+
+### Target Sum [leetcode]()
+```cpp
+int findTargetSumWays(vector<int>& nums, int target) {
+	target = abs(target);
+	int sum = 0;
+	for (auto num: nums)
+	 sum += num;
+	
+	if (target > sum or ( target + sum ) & 1)
+	 return 0;
+	
+	target = (sum + target) / 2;
+	
+	int n = nums.size();
+	int dp[n + 1][target + 1];
+	
+	for (int j =0; j <= target; j++)
+	 dp[0][j] = 0;
+	
+	for (int i = 0; i <= n; i++) 
+	 dp[i][0] = 1;
+	
+	for (int i = 1; i <= n; i++) {
+	 for (int j = 0; j <= target; j++) {
+		 if (nums[i - 1] <= j)
+			 dp[i][j] = dp[i - 1][j] + dp[i - 1][j - nums[i - 1]];
+		 else
+			 dp[i][j] = dp[i - 1][j];
+	 }
+	}
+	
+	return dp[n][target];
+}
+```
